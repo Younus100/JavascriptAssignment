@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Project</title>
+    <script type="text/javascript">
+
+      var i=0;
+      var images = [] ;
+
+      images[0] = 'index.jpg';
+      images[1] = 'index2.jpg';
+      images[2] = 'index3.jpg';
+      images[3] = 'index4.jpg';
+      images[4] = 'index5.jpg';
+      images[5] = 'index6.jpg';
+
+      function changeImg(){
+        var time    = document.getElementById('tim').value;
+        document.getElementById('imag').src=images[i]
+        if(i < images.length-1) {
+          i++;
+        } else {
+          i=0;
+        }
+        setTimeout("changeImg()",time);
+
+      }
+
+
+      //function that display value
+         function displayy(val)
+         {
+             document.getElementById("result").value+=val
+         }
+
+         //function that evaluates the digit and return result
+         function solve()
+         {
+             let x = document.getElementById("result").value
+             let y = eval(x)
+             document.getElementById("result").value = y
+         }
+
+         //function that clear the display
+         function clr()
+         {
+             document.getElementById("result").value = ""
+         }
+
+         function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false)
+        {
+            alert('Invalid Email Address');
+
+            return false;
+        }
+
+        return true;
+
+}
+
+    </script>
+
+    <style media="screen">
+      .myb
+         {
+         background-color:black;
+         color: white;
+         border: solid black 2px;
+         width:100%
+         }
+
+         input[type="text"]
+         {
+         background-color:white;
+         border: solid black 2px;
+         width:100%
+         }
+    </style>
+
+  </head>
+  <body>
+    <h1 style="text-align:center">JavaScript Project</h1>
+
+    <table border="3" cellspacing="30px" cellpadding="10px" align="center">
+      <tr>
+        <td>
+        <p style="text-align:center"><strong>SlideShow</strong></p>
+        <label for="t">Enter Time in (ms):</label>
+        <input type="number" name="t" value="1000" id="tim"><br>
+        <p style="text-align:center;"><input type="button" onclick=changeImg() name="Buttton" value="Start SlideShow!"></p>
+        </td>
+          <td>
+            <p style="text-align:center;"><img src="index.jpg" alt="" id="imag" height="200px" width="250px"></p>
+         </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="text-align:center"><strong>My Calculator</strong></p>
+
+       <table border="2" align="center">
+          <tr>
+             <td colspan="3"><input type="text" id="result"/></td>
+             <td><input type="button" value="c" onclick="clr()" class="myb"/> </td>
+          </tr>
+          <tr>
+
+             <td><input type="button" value="1" onclick="displayy('1')" class="myb"/> </td>
+             <td><input type="button" value="2" onclick="displayy('2')" class="myb"/> </td>
+             <td><input type="button" value="3" onclick="displayy('3')"class="myb"/> </td>
+             <td><input type="button" value="/" onclick="displayy('/')" class="myb"/> </td>
+          </tr>
+          <tr>
+             <td><input type="button" value="4" onclick="displayy('4')"class="myb"/> </td>
+             <td><input type="button" value="5" onclick="displayy('5')"class="myb"/> </td>
+             <td><input type="button" value="6" onclick="displayy('6')"class="myb"/> </td>
+             <td><input type="button" value="-" onclick="displayy('-')" class="myb"/> </td>
+          </tr>
+          <tr>
+             <td><input type="button" value="7" onclick="displayy('7')" class="myb"/> </td>
+             <td><input type="button" value="8" onclick="displayy('8')" class="myb"/> </td>
+             <td><input type="button" value="9" onclick="displayy('9')" class="myb"/> </td>
+             <td><input type="button" value="+" onclick="displayy('+')" class="myb"/> </td>
+          </tr>
+          <tr>
+             <td><input type="button" value="." onclick="displayy('.')" class="myb"/> </td>
+             <td><input type="button" value="0" onclick="displayy('0')" class="myb"/> </td>
+             <td><input type="button" value="=" onclick="solve()" class="myb"/> </td>
+             <td><input type="button" value="*" onclick="displayy('*')" class="myb"/> </td>
+          </tr>
+       </table> <br><br>
+        </td>
+        </tr>
+        <tr>
+          <td id="tabled">
+            <p style="text-align:center"><strong>Input an email and Right Click</strong></p>
+          <input type="text" onblur="validateEmail(this);" />
+          <p id="validem" ></p>
+
+          </td>
+        </tr>
+    </table>
+
+
+  </body>
+</html>
